@@ -58,7 +58,7 @@ static NSString *const reuseIdentifier = @"ReuseIdentifier";
 #pragma mark Private
 
 - (NSArray *)examples {
-    return @[@"Main"];
+    return @[@"Auto Layout"];
 }
 
 @end
