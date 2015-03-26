@@ -48,6 +48,19 @@ static NSString *const reuseIdentifier = @"ReuseIdentifier";
     return cell;
 }
 
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *example = self.examples[indexPath.row];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:example owner:nil options:nil];
+    
+    NSAssert([nib[0] isKindOfClass:[UIViewController class]], @"Expected a view controller.");
+    UIViewController *viewController = nib[0];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark Private
 
 - (NSArray *)examples {
