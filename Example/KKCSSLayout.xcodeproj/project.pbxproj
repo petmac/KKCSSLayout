@@ -68,7 +68,7 @@
 		C1B207B537A5778BB02968E6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E807C1E16D72575B090BCDE2 /* Pods-KKCSSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKCSSLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KKCSSLayout/Pods-KKCSSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		EE96FDAD68FF60025BBD219B /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F06A69200D31B12101243B40 /* KKCSSLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KKCSSLayout.podspec; path = ../KKCSSLayout.podspec; sourceTree = "<group>"; };
+		F06A69200D31B12101243B40 /* KKCSSLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = KKCSSLayout.podspec; path = ../KKCSSLayout.podspec; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
