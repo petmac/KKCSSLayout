@@ -12,7 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Main" owner:self options:nil];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Main" owner:nil options:nil];
     
     NSAssert([nib[0] isKindOfClass:[UIViewController class]], @"Expected a view controller.");
     UIViewController *mainViewController = nib[0];
