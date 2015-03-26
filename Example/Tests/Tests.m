@@ -6,4 +6,13 @@
 //  Copyright (c) 2014 Peter Mackay. All rights reserved.
 //
 
-${TEST_EXAMPLE}
+@interface Tests : XCTestCase
+
+@end
+
+@implementation Tests
+
+- (void)testNothing {
+}
+
+@end
