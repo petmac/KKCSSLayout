@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		AA7390C83BEF42E556CE84FB /* libPods-KKCSSLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BF4EC5B32A9BA0912E49B3 /* libPods-KKCSSLayout.a */; };
 		B2A35FDB1AC40D3500AEE420 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A35FDA1AC40D3500AEE420 /* Main.xib */; };
+		B2A35FE11AC40ED300AEE420 /* KKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A35FE01AC40ED300AEE420 /* KKMainViewController.m */; };
 		CF0A51C083C09C64BAA46CEE /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8737C9C4413BDF904C6E577C /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		8737C9C4413BDF904C6E577C /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9640FA69D79F19469ED28DD9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B2A35FDA1AC40D3500AEE420 /* Main.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
+		B2A35FDF1AC40ED300AEE420 /* KKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKMainViewController.h; sourceTree = "<group>"; };
+		B2A35FE01AC40ED300AEE420 /* KKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKMainViewController.m; sourceTree = "<group>"; };
 		C1B207B537A5778BB02968E6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E807C1E16D72575B090BCDE2 /* Pods-KKCSSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKCSSLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KKCSSLayout/Pods-KKCSSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		F06A69200D31B12101243B40 /* KKCSSLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KKCSSLayout.podspec; path = ../KKCSSLayout.podspec; sourceTree = "<group>"; };
@@ -141,13 +144,15 @@
 		6003F593195388D20070C39A /* KKCSSLayout */ = {
 			isa = PBXGroup;
 			children = (
+				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F59C195388D20070C39A /* KKAppDelegate.h */,
 				6003F59D195388D20070C39A /* KKAppDelegate.m */,
+				B2A35FDF1AC40ED300AEE420 /* KKMainViewController.h */,
+				B2A35FE01AC40ED300AEE420 /* KKMainViewController.m */,
 				6003F5A5195388D20070C39A /* KKViewController.h */,
 				6003F5A6195388D20070C39A /* KKViewController.m */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
-				6003F594195388D20070C39A /* Supporting Files */,
 				B2A35FDA1AC40D3500AEE420 /* Main.xib */,
+				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			path = KKCSSLayout;
 			sourceTree = "<group>";
@@ -242,7 +247,7 @@
 			attributes = {
 				CLASSPREFIX = KK;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = Kotikan;
+				ORGANIZATIONNAME = "Kotikan Ltd";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -360,6 +365,7 @@
 				6003F59E195388D20070C39A /* KKAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* KKViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				B2A35FE11AC40ED300AEE420 /* KKMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
