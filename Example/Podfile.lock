@@ -1,0 +1,14 @@
+PODS:
+  - KKCSSLayout (0.1.0)
+
+DEPENDENCIES:
+  - KKCSSLayout (from `../`)
+
+EXTERNAL SOURCES:
+  KKCSSLayout:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KKCSSLayout: edf9f613b899700f04a59b8a5dc4799661bd8c72
+
+COCOAPODS: 0.36.0
