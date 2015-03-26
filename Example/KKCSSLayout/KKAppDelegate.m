@@ -12,7 +12,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Main" owner:self options:nil];
+    
+    NSAssert([nib[0] isKindOfClass:[UIViewController class]], @"Expected a view controller.");
+    UIViewController *mainViewController = nib[0];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = navigationController;
+    
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 							
