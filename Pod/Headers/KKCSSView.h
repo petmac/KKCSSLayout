@@ -10,13 +10,13 @@
 
 @interface KKCSSView : UIView
 
-@property (nonatomic) IBInspectable BOOL rowFlexDirection;
-@property (nonatomic) IBInspectable NSInteger justifyContent;
-@property (nonatomic) IBInspectable NSInteger alignItems;
-@property (nonatomic) IBInspectable NSInteger alignSelf;
+@property (nonatomic) IBInspectable BOOL columnFlexDirection;
+@property (nonatomic) IBInspectable NSString *justifyContent;
+@property (nonatomic) IBInspectable NSString *alignItems;
+// @property (nonatomic) IBInspectable NSString *alignSelf;
 @property (nonatomic) IBInspectable BOOL absolutePosition;
 @property (nonatomic) IBInspectable BOOL flexWrap;
-@property (nonatomic) IBInspectable CGFloat flex;
+// @property (nonatomic) IBInspectable CGFloat flex;
 
 @property (nonatomic) IBInspectable CGFloat leftMargin;
 @property (nonatomic) IBInspectable CGFloat topMargin;

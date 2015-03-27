@@ -27,13 +27,22 @@ static css_node_t *getChildNode(void *context, int i) {
     return &childNodes[i];
 }
 
+static css_dim_t measure(void *context, float width) {
+    UIView *view = (__bridge UIView *)context;
+    assert([view isKindOfClass:[UIView class]]);
+    
+    CGSize size = view.intrinsicContentSize;
+    
+    css_dim_t dim = {};
+    dim.dimensions[CSS_WIDTH] = size.width;
+    dim.dimensions[CSS_HEIGHT] = size.height;
+
+    return dim;
+}
+
 @implementation KKCSSView
 
 #pragma mark UIView
-
-- (CGSize)sizeThatFits:(CGSize)size {
-    return self.bounds.size;
-}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -64,13 +73,13 @@ static css_node_t *getChildNode(void *context, int i) {
     node->children_count = static_cast<int>(self.subviews.count);
     
     css_style_t *style = &node->style;
-    style->flex_direction = self.rowFlexDirection ? CSS_FLEX_DIRECTION_ROW : CSS_FLEX_DIRECTION_COLUMN;
-    style->justify_content = static_cast<css_justify_t>(self.justifyContent);
-    style->align_items = static_cast<css_align_t>(self.alignItems);
-    style->align_self = static_cast<css_align_t>(self.alignSelf);
+    style->flex_direction = self.columnFlexDirection ? CSS_FLEX_DIRECTION_COLUMN : CSS_FLEX_DIRECTION_ROW;
+    style->justify_content = [KKCSSView parseJustifyContent:self.justifyContent];
+    style->align_items = [KKCSSView parseAlignItems:self.alignItems];
+    style->align_self = CSS_ALIGN_AUTO;
     style->position_type = self.absolutePosition ? CSS_POSITION_ABSOLUTE : CSS_POSITION_RELATIVE;
     style->flex_wrap = self.flexWrap ? CSS_WRAP : CSS_NOWRAP;
-    style->flex = self.flex;
+    style->flex = 0;
     
     style->margin[CSS_LEFT] = self.leftMargin;
     style->margin[CSS_TOP] = self.topMargin;
@@ -101,13 +110,16 @@ static css_node_t *getChildNode(void *context, int i) {
     
     for (NSUInteger i = 0; i < self.subviews.count; ++i) {
         UIView *view = self.subviews[i];
-        CGSize size = view.intrinsicContentSize;
         
         css_node_t *node = &(*nodes)[i];
         init_css_node(node);
         node->is_dirty = &isNodeDirty;
-        node->style.dimensions[CSS_WIDTH] = size.width;
-        node->style.dimensions[CSS_HEIGHT] = size.height;
+        node->measure = &measure;
+        node->context = (__bridge void *)view;
+        
+        css_style_t *style = &node->style;
+        style->align_self = CSS_ALIGN_STRETCH; // TODO
+        style->flex = 0; // TODO
     }
 }
 
@@ -122,7 +134,37 @@ static css_node_t *getChildNode(void *context, int i) {
         const float *position = &layout->position[0];
         const float *dimensions = &layout->dimensions[0];
         
-        subview.frame = CGRectMake(position[0], position[1], dimensions[0], dimensions[1]);
+        subview.frame = CGRectMake(position[CSS_LEFT], position[CSS_TOP], dimensions[CSS_WIDTH], dimensions[CSS_HEIGHT]);
+    }
+}
+
++ (css_justify_t)parseJustifyContent:(NSString *)justifyContent {
+    if ([justifyContent isEqualToString:@"flex-start"]) {
+        return CSS_JUSTIFY_FLEX_START;
+    } else if ([justifyContent isEqualToString:@"flex-end"]) {
+        return CSS_JUSTIFY_FLEX_END;
+    } else if ([justifyContent isEqualToString:@"center"]) {
+        return CSS_JUSTIFY_CENTER;
+    } else if ([justifyContent isEqualToString:@"space-between"]) {
+        return CSS_JUSTIFY_SPACE_BETWEEN;
+    } else if ([justifyContent isEqualToString:@"space-around"]) {
+        return CSS_JUSTIFY_SPACE_AROUND;
+    } else {
+        return CSS_JUSTIFY_FLEX_START;
+    }
+}
+
++ (css_align_t)parseAlignItems:(NSString *)alignItems {
+    if ([alignItems isEqualToString:@"flex-start"]) {
+        return CSS_ALIGN_FLEX_START;
+    } else if ([alignItems isEqualToString:@"flex-end"]) {
+        return CSS_ALIGN_FLEX_END;
+    } else if ([alignItems isEqualToString:@"center"]) {
+        return CSS_ALIGN_CENTER;
+    } else if ([alignItems isEqualToString:@"stretch"]) {
+        return CSS_ALIGN_STRETCH;
+    } else {
+        return CSS_ALIGN_CENTER;
     }
 }
 

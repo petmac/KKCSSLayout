@@ -35,6 +35,10 @@
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="string" keyPath="alignItems" value="flex-end"/>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="columnFlexDirection" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </view>
             <extendedEdge key="edgesForExtendedLayout"/>
             <point key="canvasLocation" x="460" y="277"/>
