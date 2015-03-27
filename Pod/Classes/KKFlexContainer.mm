@@ -118,7 +118,7 @@ static css_dim_t measure(void *context, float width) {
         node->context = (__bridge void *)view;
         
         css_style_t *style = &node->style;
-        style->align_self = CSS_ALIGN_STRETCH; // TODO
+        style->align_self = CSS_ALIGN_AUTO; // TODO
         style->flex = 0; // TODO
     }
 }
