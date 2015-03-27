@@ -25,7 +25,10 @@ static bool isNodeDirty(void *) {
 }
 
 static css_node_t *getChildNode(void *context, int i) {
+    assert(context != NULL);
+
     css_node_t *childNodes = static_cast<css_node_t *>(context);
+
     return &childNodes[i];
 }
 
@@ -46,6 +49,20 @@ static css_dim_t measure(void *context, float width) {
 
 #pragma mark UIView
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    NodeList subviewNodes(self.subviews.count);
+    [self setSubviewNodes:&subviewNodes];
+    
+    css_node_t node = {};
+    [self setSelfNode:&node];
+    
+    node.context = subviewNodes.empty() ? NULL : &subviewNodes[0];
+    layoutNode(&node, self.bounds.size.width);
+    node.context = NULL;
+    
+    return CGSizeMake(node.layout.dimensions[CSS_WIDTH], node.layout.dimensions[CSS_HEIGHT]);
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -58,6 +75,8 @@ static css_dim_t measure(void *context, float width) {
     
     css_node_t node = {};
     [self setSelfNode:&node];
+    node.style.dimensions[CSS_WIDTH] = self.bounds.size.width;
+    node.style.dimensions[CSS_HEIGHT] = self.bounds.size.height;
     
     node.context = &subviewNodes[0];
     layoutNode(&node, self.bounds.size.width);
@@ -79,9 +98,6 @@ static css_dim_t measure(void *context, float width) {
     style->justify_content = [KKFlexContainer parseJustifyContent:self.justifyContent];
     style->align_items = [KKFlexContainer parseAlignItems:self.alignItems];
     style->flex_wrap = self.flexWrap ? CSS_WRAP : CSS_NOWRAP;
-    
-    style->dimensions[CSS_WIDTH] = self.bounds.size.width;
-    style->dimensions[CSS_HEIGHT] = self.bounds.size.height;
 }
 
 - (void)setSubviewNodes:(NodeList *)nodes {
