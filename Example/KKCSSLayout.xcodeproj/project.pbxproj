@@ -27,6 +27,7 @@
 		B2A35FE81AC41E8F00AEE420 /* CSS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A35FE71AC41E8F00AEE420 /* CSS.xib */; };
 		B2CB44441AC56A11002B2567 /* Flex Wrap.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2CB44431AC56A11002B2567 /* Flex Wrap.xib */; };
 		B2CB44461AC58550002B2567 /* Justify Content.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2CB44451AC58550002B2567 /* Justify Content.xib */; };
+		B2CB44481AC58AE0002B2567 /* Align Items.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2CB44471AC58AE0002B2567 /* Align Items.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		B2A35FE71AC41E8F00AEE420 /* CSS.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CSS.xib; sourceTree = "<group>"; };
 		B2CB44431AC56A11002B2567 /* Flex Wrap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Flex Wrap.xib"; sourceTree = "<group>"; };
 		B2CB44451AC58550002B2567 /* Justify Content.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Justify Content.xib"; sourceTree = "<group>"; };
+		B2CB44471AC58AE0002B2567 /* Align Items.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Align Items.xib"; sourceTree = "<group>"; };
 		C1B207B537A5778BB02968E6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E807C1E16D72575B090BCDE2 /* Pods-KKCSSLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KKCSSLayout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KKCSSLayout/Pods-KKCSSLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		F06A69200D31B12101243B40 /* KKCSSLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = KKCSSLayout.podspec; path = ../KKCSSLayout.podspec; sourceTree = "<group>"; tabWidth = 2; };
@@ -204,6 +206,7 @@
 		B2A35FE21AC412BF00AEE420 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B2CB44471AC58AE0002B2567 /* Align Items.xib */,
 				B2A35FE31AC4130900AEE420 /* Auto Layout.xib */,
 				B2A35FE71AC41E8F00AEE420 /* CSS.xib */,
 				B2CB44431AC56A11002B2567 /* Flex Wrap.xib */,
@@ -298,6 +301,7 @@
 				B2CB44461AC58550002B2567 /* Justify Content.xib in Resources */,
 				B2A35FDB1AC40D3500AEE420 /* Main.xib in Resources */,
 				B2A35FE81AC41E8F00AEE420 /* CSS.xib in Resources */,
+				B2CB44481AC58AE0002B2567 /* Align Items.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				B2A35FE41AC4130900AEE420 /* Auto Layout.xib in Resources */,
 			);
