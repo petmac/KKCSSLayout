@@ -160,7 +160,7 @@
                                 <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="string" keyPath="alignItems" value="center"/>
-                            <userDefinedRuntimeAttribute type="string" keyPath="alignSelf" value="flex-end"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="alignSelf" value="center"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="justifyContent" value="center"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="flex">
                                 <real key="value" value="1"/>
