@@ -8,7 +8,7 @@
 
 #import "KKFlexContainer.h"
 
-#import "KKFlexItem.h"
+#import "UIView+KKFlexItem.h"
 
 extern "C" {
 #import "Layout.h"
@@ -95,34 +95,16 @@ static css_dim_t measure(void *context, float width) {
         node->is_dirty = &isNodeDirty;
         node->measure = &measure;
         node->context = (__bridge void *)view;
-        
-        if ([view isKindOfClass:[KKFlexItem class]]) {
-            KKFlexItem *item = (KKFlexItem *)view;
-            css_style_t *style = &node->style;
 
-            style->position_type = item.absolutePosition ? CSS_POSITION_ABSOLUTE : CSS_POSITION_RELATIVE;
-            style->flex = item.flex;
-            
-            style->margin[CSS_LEFT] = item.leftMargin;
-            style->margin[CSS_TOP] = item.topMargin;
-            style->margin[CSS_RIGHT] = item.rightMargin;
-            style->margin[CSS_BOTTOM] = item.bottomMargin;
-            
-            style->position[CSS_LEFT] = CGRectGetMinX(item.position);
-            style->position[CSS_TOP] = CGRectGetMinY(item.position);
-            style->position[CSS_RIGHT] = CGRectGetMaxX(item.position);
-            style->position[CSS_BOTTOM] = CGRectGetMaxY(item.position);
-            
-            style->padding[CSS_LEFT] = item.leftPadding;
-            style->padding[CSS_TOP] = item.topPadding;
-            style->padding[CSS_RIGHT] = item.rightPadding;
-            style->padding[CSS_BOTTOM] = item.bottomPadding;
-            
-            style->border[CSS_LEFT] = item.leftBorder;
-            style->border[CSS_TOP] = item.topBorder;
-            style->border[CSS_RIGHT] = item.rightBorder;
-            style->border[CSS_BOTTOM] = item.bottomBorder;
-        }
+        css_style_t *style = &node->style;
+        style->align_self = [KKFlexContainer parseAlignSelf:view.alignSelf];
+        style->flex = view.flex;
+        
+        CGFloat margin = view.margin;
+        style->margin[CSS_LEFT] = margin;
+        style->margin[CSS_TOP] = margin;
+        style->margin[CSS_RIGHT] = margin;
+        style->margin[CSS_BOTTOM] = margin;
     }
 }
 
@@ -168,6 +150,22 @@ static css_dim_t measure(void *context, float width) {
         return CSS_ALIGN_STRETCH;
     } else {
         return CSS_ALIGN_STRETCH;
+    }
+}
+
++ (css_align_t)parseAlignSelf:(NSString *)alignSelf {
+    if ([alignSelf isEqualToString:@"auto"]) {
+        return CSS_ALIGN_AUTO;
+    } else if ([alignSelf isEqualToString:@"flex-start"]) {
+        return CSS_ALIGN_FLEX_START;
+    } else if ([alignSelf isEqualToString:@"flex-end"]) {
+        return CSS_ALIGN_FLEX_END;
+    } else if ([alignSelf isEqualToString:@"center"]) {
+        return CSS_ALIGN_CENTER;
+    } else if ([alignSelf isEqualToString:@"stretch"]) {
+        return CSS_ALIGN_STRETCH;
+    } else {
+        return CSS_ALIGN_AUTO;
     }
 }
 
