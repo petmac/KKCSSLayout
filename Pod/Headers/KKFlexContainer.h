@@ -1,5 +1,5 @@
 //
-//  KKCSSView.h
+//  KKFlexContainer.h
 //  KKCSSLayout
 //
 //  Created by Peter Mackay on 26/03/2015.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKCSSView : UIView
+@interface KKFlexContainer : UIView
 
 @property (nonatomic) IBInspectable BOOL columnFlexDirection;
 @property (nonatomic) IBInspectable NSString *justifyContent;

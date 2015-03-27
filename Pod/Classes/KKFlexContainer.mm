@@ -1,12 +1,12 @@
 //
-//  KKCSSView.m
+//  KKFlexContainer.mm
 //  KKCSSLayout
 //
 //  Created by Peter Mackay on 26/03/2015.
 //  Copyright (c) 2014 Peter Mackay. All rights reserved.
 //
 
-#import "KKCSSView.h"
+#import "KKFlexContainer.h"
 
 extern "C" {
 #import "Layout.h"
@@ -40,7 +40,7 @@ static css_dim_t measure(void *context, float width) {
     return dim;
 }
 
-@implementation KKCSSView
+@implementation KKFlexContainer
 
 #pragma mark UIView
 
@@ -74,8 +74,8 @@ static css_dim_t measure(void *context, float width) {
     
     css_style_t *style = &node->style;
     style->flex_direction = self.columnFlexDirection ? CSS_FLEX_DIRECTION_COLUMN : CSS_FLEX_DIRECTION_ROW;
-    style->justify_content = [KKCSSView parseJustifyContent:self.justifyContent];
-    style->align_items = [KKCSSView parseAlignItems:self.alignItems];
+    style->justify_content = [KKFlexContainer parseJustifyContent:self.justifyContent];
+    style->align_items = [KKFlexContainer parseAlignItems:self.alignItems];
     style->align_self = CSS_ALIGN_AUTO;
     style->position_type = self.absolutePosition ? CSS_POSITION_ABSOLUTE : CSS_POSITION_RELATIVE;
     style->flex_wrap = self.flexWrap ? CSS_WRAP : CSS_NOWRAP;
