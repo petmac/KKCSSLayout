@@ -50,6 +50,10 @@ static css_dim_t measure(void *context, float width) {
 #pragma mark UIView
 
 - (CGSize)sizeThatFits:(CGSize)size {
+    return self.intrinsicContentSize;
+}
+
+- (CGSize)intrinsicContentSize {
     NodeList subviewNodes(self.subviews.count);
     [self setSubviewNodes:&subviewNodes];
     
