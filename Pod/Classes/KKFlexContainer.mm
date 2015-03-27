@@ -8,6 +8,8 @@
 
 #import "KKFlexContainer.h"
 
+#import "KKFlexItem.h"
+
 extern "C" {
 #import "Layout.h"
 }
@@ -76,30 +78,7 @@ static css_dim_t measure(void *context, float width) {
     style->flex_direction = self.columnFlexDirection ? CSS_FLEX_DIRECTION_COLUMN : CSS_FLEX_DIRECTION_ROW;
     style->justify_content = [KKFlexContainer parseJustifyContent:self.justifyContent];
     style->align_items = [KKFlexContainer parseAlignItems:self.alignItems];
-    style->align_self = CSS_ALIGN_AUTO;
-    style->position_type = self.absolutePosition ? CSS_POSITION_ABSOLUTE : CSS_POSITION_RELATIVE;
     style->flex_wrap = self.flexWrap ? CSS_WRAP : CSS_NOWRAP;
-    style->flex = 0;
-    
-    style->margin[CSS_LEFT] = self.leftMargin;
-    style->margin[CSS_TOP] = self.topMargin;
-    style->margin[CSS_RIGHT] = self.rightMargin;
-    style->margin[CSS_BOTTOM] = self.bottomMargin;
-    
-    style->position[CSS_LEFT] = CGRectGetMinX(self.position);
-    style->position[CSS_TOP] = CGRectGetMinY(self.position);
-    style->position[CSS_RIGHT] = CGRectGetMaxX(self.position);
-    style->position[CSS_BOTTOM] = CGRectGetMaxY(self.position);
-    
-    style->padding[CSS_LEFT] = self.leftPadding;
-    style->padding[CSS_TOP] = self.topPadding;
-    style->padding[CSS_RIGHT] = self.rightPadding;
-    style->padding[CSS_BOTTOM] = self.bottomPadding;
-    
-    style->border[CSS_LEFT] = self.leftBorder;
-    style->border[CSS_TOP] = self.topBorder;
-    style->border[CSS_RIGHT] = self.rightBorder;
-    style->border[CSS_BOTTOM] = self.bottomBorder;
     
     style->dimensions[CSS_WIDTH] = self.bounds.size.width;
     style->dimensions[CSS_HEIGHT] = self.bounds.size.height;
@@ -117,9 +96,33 @@ static css_dim_t measure(void *context, float width) {
         node->measure = &measure;
         node->context = (__bridge void *)view;
         
-        css_style_t *style = &node->style;
-        style->align_self = CSS_ALIGN_AUTO; // TODO
-        style->flex = 0; // TODO
+        if ([view isKindOfClass:[KKFlexItem class]]) {
+            KKFlexItem *item = (KKFlexItem *)view;
+            css_style_t *style = &node->style;
+
+            style->position_type = item.absolutePosition ? CSS_POSITION_ABSOLUTE : CSS_POSITION_RELATIVE;
+            style->flex = item.flex;
+            
+            style->margin[CSS_LEFT] = item.leftMargin;
+            style->margin[CSS_TOP] = item.topMargin;
+            style->margin[CSS_RIGHT] = item.rightMargin;
+            style->margin[CSS_BOTTOM] = item.bottomMargin;
+            
+            style->position[CSS_LEFT] = CGRectGetMinX(item.position);
+            style->position[CSS_TOP] = CGRectGetMinY(item.position);
+            style->position[CSS_RIGHT] = CGRectGetMaxX(item.position);
+            style->position[CSS_BOTTOM] = CGRectGetMaxY(item.position);
+            
+            style->padding[CSS_LEFT] = item.leftPadding;
+            style->padding[CSS_TOP] = item.topPadding;
+            style->padding[CSS_RIGHT] = item.rightPadding;
+            style->padding[CSS_BOTTOM] = item.bottomPadding;
+            
+            style->border[CSS_LEFT] = item.leftBorder;
+            style->border[CSS_TOP] = item.topBorder;
+            style->border[CSS_RIGHT] = item.rightBorder;
+            style->border[CSS_BOTTOM] = item.bottomBorder;
+        }
     }
 }
 
