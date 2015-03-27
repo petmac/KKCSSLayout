@@ -33,7 +33,7 @@ static css_dim_t measure(void *context, float width) {
     UIView *view = (__bridge UIView *)context;
     assert([view isKindOfClass:[UIView class]]);
     
-    CGSize size = view.intrinsicContentSize;
+    CGSize size = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     css_dim_t dim = {};
     dim.dimensions[CSS_WIDTH] = size.width;
