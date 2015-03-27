@@ -28,12 +28,18 @@ static NSString *const reuseIdentifier = @"ReuseIdentifier";
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.examples.count;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray *rows = self.examples[section];
+    return rows.count;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *example = self.examples[indexPath.row];
+    NSArray *rows = self.examples[indexPath.section];
+    NSString *example = rows[indexPath.row];
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -45,7 +51,8 @@ static NSString *const reuseIdentifier = @"ReuseIdentifier";
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *example = self.examples[indexPath.row];
+    NSArray *rows = self.examples[indexPath.section];
+    NSString *example = rows[indexPath.row];
     
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:example owner:nil options:nil];
     
@@ -58,7 +65,7 @@ static NSString *const reuseIdentifier = @"ReuseIdentifier";
 #pragma mark Private
 
 - (NSArray *)examples {
-    return @[@"Auto Layout", @"CSS", @"Flex Wrap", @"Justify Content", @"Align Items", @"Align Self"];
+    return @[@[@"Auto Layout", @"CSS"], @[@"Flex Wrap", @"Justify Content", @"Align Items"], @[@"Flex", @"Align Self"]];
 }
 
 @end
