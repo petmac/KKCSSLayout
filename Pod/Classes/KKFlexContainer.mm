@@ -167,7 +167,7 @@ static css_dim_t measure(void *context, float width) {
     } else if ([alignItems isEqualToString:@"stretch"]) {
         return CSS_ALIGN_STRETCH;
     } else {
-        return CSS_ALIGN_CENTER;
+        return CSS_ALIGN_STRETCH;
     }
 }
 
