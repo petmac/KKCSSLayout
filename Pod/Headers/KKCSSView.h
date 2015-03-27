@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
-
 @interface KKCSSView : UIView
 
 @property (nonatomic) IBInspectable BOOL rowFlexDirection;
